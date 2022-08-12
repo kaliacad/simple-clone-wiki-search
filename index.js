@@ -1,5 +1,6 @@
 const btnSearch = document.getElementById("btn-search");
 const langues = ["sw", "fr", "ln", "en"];
+const blockSearch = document.getElementById("block-search");
 btnSearch.addEventListener("click", function (evt) {
   evt.preventDefault();
   const valueContainer = document.getElementById("search-input");
@@ -11,10 +12,8 @@ btnSearch.addEventListener("click", function (evt) {
       return resp.json();
     })
     .then(function (data) {
-      console.log(data);
       const [contentSearch, titles, contents, Urls] = data;
       titles.forEach((title, index) => {
-        const blockSearch = document.getElementById("block-search");
         const card = `
             <div class="card mt-5">
                 <a href="#" class="text-gray-800">${Urls[index]}</a>
@@ -28,4 +27,5 @@ btnSearch.addEventListener("click", function (evt) {
         blockSearch.innerHTML += card;
       });
     });
+  blockSearch.innerHTML = "";
 });
