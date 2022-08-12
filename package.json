@@ -1,0 +1,23 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/app.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NdekoCode/simple-clone-google-search.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NdekoCode/simple-clone-google-search/issues"
+  },
+  "homepage": "https://github.com/NdekoCode/simple-clone-google-search#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}

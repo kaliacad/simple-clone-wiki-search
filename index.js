@@ -1,4 +1,5 @@
 const btnSearch = document.getElementById("btn-search");
+const langues = ["sw", "fr", "ln", "en"];
 btnSearch.addEventListener("click", function (evt) {
   evt.preventDefault();
   const valueContainer = document.getElementById("search-input");
