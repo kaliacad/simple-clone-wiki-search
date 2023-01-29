@@ -58,13 +58,10 @@ function App() {
             id="btn-search"
             className="bg-[#f8f9fa] px-3 py-2 rounded text-gray-500"
           >
-            Recherche Wipedia
-          </button>
-          <button className="bg-[#f8f9fa] px-3 py-2 rounded text-gray-500">
-            J'ai de la chance
+            Recherche Wikipedia
           </button>
         </div>
-        <div className="flex flex-wrap justify-center px-12 mt-3 space-x-12">
+        <div className="flex flex-wrap justify-center px-12 mt-3 space-x-12 font-medium">
           <a className="text-blue-800" href="#">
             Wikipedia disponible en :
           </a>
