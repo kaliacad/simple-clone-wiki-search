@@ -1,4 +1,11 @@
-import { createContext, memo, useContext, useMemo, useState } from "react";
+import {
+  createContext,
+  memo,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 
 const SearchContext = createContext();
 const SearchUseContext = () => useContext(SearchContext);
@@ -13,8 +20,23 @@ export const SearchContextProvider = memo(({ children }) => {
   ];
   const [defaultLang, setLang] = useState(languages[0]);
   const [search, setSearch] = useState("");
-  const [isLoading, setLoading] = useState(false);
+  const [url, setUrl] = useState(
+    "https://en.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=" +
+      search +
+      "&limit=15"
+  );
+  const handleSearch = useCallback(
+    (search) => {
+      const url = `https://en.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=${search}
+        "&limit=15`;
 
+      setSearch(search);
+      setUrl(url);
+    },
+    [search, url]
+  );
+  const [isLoading, setLoading] = useState(false);
+  const [dataSearch, setDataSearch] = useState([]);
   const handleLang = (index) => {
     setLang(index.toLowerCase());
   };
@@ -27,6 +49,11 @@ export const SearchContextProvider = memo(({ children }) => {
       defaultLang,
       languages,
       handleLang,
+      url,
+      setUrl,
+      dataSearch,
+      setDataSearch,
+      handleSearch,
     }),
     [search]
   );

@@ -60,14 +60,13 @@ function loadDataSearch() {
 }
 btnSearch.addEventListener("click", function (evt) {
   evt.preventDefault();
-  console.log(evt.code);
   loadDataSearch();
 });
 svgSearch.addEventListener("click", function (evt) {
   evt.preventDefault();
   console.log(evt.code);
   loadDataSearch();
-})
+});
 
 valueContainer.addEventListener("keyup", function (evt) {
   evt.preventDefault();

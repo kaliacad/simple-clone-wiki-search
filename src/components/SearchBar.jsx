@@ -3,15 +3,16 @@ import logo from "../assets/img/wikipedia.png";
 import SearchUseContext from "../libs/context/SearchContext";
 import Language from "./Language";
 const SearchBar = () => {
-  const { setSearch } = SearchUseContext();
+  const { handleSearch } = SearchUseContext();
   const [searchInput, setSearchInput] = useState("");
   const handleChange = ({ target }) => {
     const { name, value } = target;
     setSearchInput(value);
   };
   const handleSubmit = (e) => {
+    console.log(searchInput);
     e.preventDefault();
-    setSearch(searchInput);
+    handleSearch(searchInput);
   };
   return (
     <form
