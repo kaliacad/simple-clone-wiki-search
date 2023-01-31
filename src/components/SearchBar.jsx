@@ -3,7 +3,7 @@ import logo from "../assets/img/wikipedia.png";
 import Language from "./Language";
 const SearchBar = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-white">
+    <form className="flex flex-col items-center justify-center bg-white">
       {/*  */}
       <div
         className="h-[89px] w-[273px] mb-10"
@@ -12,7 +12,7 @@ const SearchBar = () => {
         <img className="" src={logo} alt="Wikipedia Logo" />
       </div>
       {/*  */}
-      <div className="md:w-[584px] mx-auto mt-7 flex w-[92%] items-center rounded-full border hover:shadow-md">
+      <div className="md:w-[584px] mx-auto mt-7 flex w-[92%] items-center rounded-full border hover:shadow-md transition-shadow">
         <div className="pl-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,15 +56,16 @@ const SearchBar = () => {
       {/*  */}
       <div className="flex px-12 mt-3 space-x-12">
         <button
+          type="submit"
           id="btn-search"
-          className="bg-[#f8f9fa] px-3 py-2 rounded text-gray-500"
+          className="bg-[#f8f9fa] border border-transparent  hover:text-gray-600 hover:shadow-lg px-3 py-2 border-gray-300 transition-shadow rounded text-gray-500"
         >
           Recherche Wikipedia
         </button>
       </div>
       <Language />
       {/*  */}
-    </div>
+    </form>
   );
 };
 
