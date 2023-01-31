@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/img/wikipedia.png";
+import SearchUseContext from "../libs/context/SearchContext";
 import Language from "./Language";
 const SearchBar = () => {
+  const { setSearch } = SearchUseContext();
+  const [searchInput, setSearchInput] = useState("");
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setSearchInput(value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(searchInput);
+  };
   return (
-    <form className="flex flex-col items-center justify-center bg-white">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center justify-center bg-white"
+    >
       {/*  */}
       <div
         className="h-[89px] w-[273px] mb-10"
@@ -31,6 +45,8 @@ const SearchBar = () => {
           </svg>
         </div>
         <input
+          onChange={handleChange}
+          value={searchInput}
           type="text"
           id="search-input"
           className="w-full bg-transparent rounded-full py-[14px] pl-4 outline-none"
@@ -53,7 +69,6 @@ const SearchBar = () => {
           </svg>
         </div>
       </div>
-      {/*  */}
       <div className="flex px-12 mt-3 space-x-12">
         <button
           type="submit"

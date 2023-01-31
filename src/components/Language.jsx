@@ -1,18 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import SearchUseContext from "../libs/context/SearchContext";
 
 const Language = () => {
-  const [defaultIndex, setIndex] = useState(0);
-  const languages = [
-    "Francais",
-    "English",
-    "Kiswahili",
-    "Lingala",
-    "Tshiluba",
-    "Kongo",
-  ];
-  const handleIndex = (index) => {
-    setIndex(index);
-  };
+  const { defaultLang, languages, handleLang } = SearchUseContext();
   return (
     <div className="flex flex-wrap justify-center px-12 mt-3 space-x-12 font-medium">
       <a className="text-blue-800" href="#">
@@ -20,10 +10,10 @@ const Language = () => {
       </a>
       {languages.map((language, index) => (
         <button
-          onClick={() => handleIndex(index)}
+          onClick={() => handleLang(language)}
           key={index}
           className={
-            index === defaultIndex
+            language === defaultLang
               ? "text-blue-800 font-bold up"
               : "text-gray-500 underline"
           }
