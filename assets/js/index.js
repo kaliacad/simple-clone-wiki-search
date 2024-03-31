@@ -10,7 +10,6 @@ const fetchData = async (value) => {
   const responseData = await response.json();
   if (response.ok) {
     loading = false;
-    console.log(responseData);
     const [contentSearch, titles, contents, Urls] = responseData;
     const sectionHTML = document.createElement("section");
     if (titles.length > 0) {
@@ -60,12 +59,10 @@ function loadDataSearch() {
 }
 btnSearch.addEventListener("click", function (evt) {
   evt.preventDefault();
-  console.log(evt.code);
   loadDataSearch();
 });
 svgSearch.addEventListener("click", function (evt) {
   evt.preventDefault();
-  console.log(evt.code);
   loadDataSearch();
 })
 
