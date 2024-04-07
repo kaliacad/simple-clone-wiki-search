@@ -31,12 +31,25 @@
   display: inline-block;
   animation: rotate 600ms infinite linear;
 }
-svg{
+svg {
   cursor: pointer;
 }
 
 @keyframes rotate {
   to {
     transform: rotate(1turn);
+  }
+}
+.up {
+  animation: up 0.3s ease-in forwards;
+}
+@keyframes up {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
   }
 }

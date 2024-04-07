@@ -1,8 +1,4 @@
-const btnSearch = document.getElementById("btn-search");
-const svgSearch = document.getElementById("svg-search");
-const langues = ["sw", "fr", "ln", "en"];
-const blockSearch = document.getElementById("block-search");
-const valueContainer = document.getElementById("search-input");
+import { useEffect, useState } from "react";
 
 const fetchData = async (value) => {
   const url = `https://en.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=${value}&limit=15`;
@@ -39,40 +35,25 @@ const fetchData = async (value) => {
     blockSearch.append(sectionHTML);
   }
 };
-
-function loadDataSearch() {
-  let loading = true;
-  if (loading) {
-    const loader = `
-      <div class="loadingContainer">
-        <div class="loading">
-          <span class="loadWords">Loading...</span>
-          <span class="loading__anim"></span>
-        </div>
-      </div>`;
-
-    blockSearch.innerHTML = loader;
-  }
-  const search = valueContainer.value;
-  if (search.length > 0 && (search !== "" || search !== null)) {
-    fetchData(search);
-  }
+export function useFetch(url) {
+  const [state, setState] = useState({
+    items: [],
+    loading: true,
+  });
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(url);
+        const responseData = await response.json();
+        if (response.ok) {
+          setState((d) => ({ ...d, loading: false, items: responseData }));
+        } else {
+          setState((d) => ({ ...d, loading: false }));
+        }
+      } catch (error) {
+        console.log(error);
+        setState((d) => ({ ...d, loading: false }));
+      }
+    })();
+  }, [state.loading]);
 }
-btnSearch.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  console.log(evt.code);
-  loadDataSearch();
-});
-svgSearch.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  console.log(evt.code);
-  loadDataSearch();
-})
-
-valueContainer.addEventListener("keyup", function (evt) {
-  evt.preventDefault();
-
-  if (evt.code == "Enter") {
-    loadDataSearch();
-  }
-});
